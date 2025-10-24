@@ -51,3 +51,23 @@ def afundados(frota, tabuleiro):
             if afundado:
                 retorno += 1
     return retorno
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes_novas = define_posicoes(linha, coluna, orientacao, tamanho)
+    
+    for posicao in posicoes_novas:
+        l, c = posicao
+        if l < 0 or l > 9 or c < 0 or c > 9:
+            return False
+    
+        posicoes_ocupadas = []
+    for lista_navios in frota.values():
+        for navio in lista_navios:
+            for posicao in navio:
+                posicoes_ocupadas.append(posicao)
+    
+    for posicao in posicoes_novas:
+        if posicao in posicoes_ocupadas:
+            return False  # Já ocupado
+    
+    return True
