@@ -68,6 +68,6 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     
     for posicao in posicoes_novas:
         if posicao in posicoes_ocupadas:
-            return False  # Já ocupado
+            return False
     
     return True
